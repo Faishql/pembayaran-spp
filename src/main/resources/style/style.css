@@ -1,0 +1,35 @@
+@font-face{
+  font-family: 'Poppins regular';
+  font-weight: 400;
+  src: url('../fonts/Poppins-Regular.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'Poppins medium';
+  font-weight: 500;
+  src: url('../fonts/Poppins-Medium.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'Poppins semibold';
+  font-weight: 600;
+  src: url('../fonts/Poppins-SemiBold.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'Poppins bold';
+  font-weight: 700;
+  src: url('../fonts/Poppins-Bold.ttf') format('truetype');
+}
+#regular{
+    -fx-font-family: 'Poppins regular', sans-serif;
+}
+#medium{
+    -fx-font-family: 'Poppins medium', sans-serif;
+}
+#semibold{
+    -fx-font-family: 'Poppins semibold', sans-serif;
+}
+Button#semibold{
+    -fx-font-family: 'Poppins semibold', sans-serif;
+}
+#bold{
+    -fx-font-family: 'Poppins bold', sans-serif;
+}

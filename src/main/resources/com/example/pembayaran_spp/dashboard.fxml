@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox alignment="CENTER" prefHeight="600.0" prefWidth="200.0">
+         <children>
+            <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+               <children>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
+                     <children>
+                        <Label text="SPP">
+                           <font>
+                              <Font name="Calibri Bold" size="24.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="60.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
+                     <children>
+                        <Label text="Main Menu" textFill="#454745">
+                           <font>
+                              <Font name="Calibri Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/bx_bx-home-alt.png" />
+                           </image></ImageView>
+                        <Label text="Dashboard" textFill="#454745">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
+                     <children>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/bx_bx-list-ul.png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin></ImageView>
+                        <Label text="Pembayaran SPP" textFill="#454745">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="30.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0">
+                     <children>
+                        <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/bx_bx-log-out.png" />
+                           </image></ImageView>
+                        <Label text="Logout" textFill="#454745">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </Label>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="240.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox layoutX="206.0" prefHeight="600.0" prefWidth="800.0">
+         <children>
+            <Label text="Dashboard" textFill="#212121">
+               <font>
+                  <Font name="System Bold" size="48.0" />
+               </font>
+            </Label>
+            <HBox>
+               <children>
+                  <VBox alignment="CENTER" prefHeight="160.0" prefWidth="260.0" style="-fx-background-color: #1D74DE; -fx-border-radius: 6px;">
+                     <children>
+                        <Label text="TOTAL TAGIHAN(BULAN)" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label layoutX="30.0" layoutY="30.0" text="3" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="48.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children></VBox>
+                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="160.0" prefWidth="260.0" style="-fx-background-color: #1D74DE; -fx-border-radius: 6px;">
+                     <HBox.margin>
+                        <Insets left="40.0" />
+                     </HBox.margin>
+                     <children>
+                        <Label text="TOTAL TAGIHAN(RUPIAH))" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri" size="16.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Label>
+                        <Label layoutX="54.0" layoutY="81.0" text="200.000" textFill="WHITE">
+                           <font>
+                              <Font name="Calibri Bold" size="48.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </Label>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets top="60.0" />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets left="100.0" top="40.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>
