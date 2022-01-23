@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.dataSiswaController" fx:id="rootAnchorPane">
+<AnchorPane fx:id="rootAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.dataSiswaController">
    <children>
       <VBox alignment="CENTER" prefWidth="180.0">
          <children>
@@ -125,7 +125,7 @@
                      </padding>
                   </HBox>
                   <Region VBox.vgrow="ALWAYS" />
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0" onMouseClicked="#back">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>

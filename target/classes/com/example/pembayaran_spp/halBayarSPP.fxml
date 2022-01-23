@@ -49,14 +49,14 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" style="-fx-background-radius: 0 12 12 0;">
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#tohaldashboardUserClick" style="-fx-background-radius: 0 12 12 0;">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../img/bx_bx-home-alt.png" />
                            </image>
                         </ImageView>
-                        <Label id="medium" fx:id="h1" text="Dashboard" textFill="#454745">
+                        <Label id="medium" fx:id="h1" text="Dashboard" textFill="#212121">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -72,7 +72,7 @@
                         <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" style="-fx-background-radius: 0 12 12 0; -fx-background-color: rgba(29, 116, 222, 0.2);">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#tohalBayarSPP" style="-fx-background-radius: 0 12 12 0; -fx-background-color: rgba(29, 116, 222, 0.2);">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -98,7 +98,7 @@
                         <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="200.0" style="-fx-background-radius: 0 12 12 0;">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="200.0" onMouseClicked="#tohalDataDiriSiswa" style="-fx-background-radius: 0 12 12 0;">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -125,7 +125,7 @@
                      </padding>
                   </HBox>
                   <Region VBox.vgrow="ALWAYS" />
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0" onMouseClicked="#logout">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>

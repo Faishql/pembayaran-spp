@@ -15,11 +15,28 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.scene.Node;
 
 public class dataSiswaController implements Initializable{
+
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+    @FXML
+    void back(MouseEvent event) throws IOException {
+        
+        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root, 900, 600);
+        stage.setScene(scene);
+        stage.show();
+           
+    }
 
     @FXML
     private TableView<siswa> tableSiswa;
@@ -72,6 +89,7 @@ public class dataSiswaController implements Initializable{
         
         tambahDataSiswa.show();
     }
+
     
 
 }
