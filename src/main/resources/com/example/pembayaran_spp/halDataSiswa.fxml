@@ -13,22 +13,22 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.dataSiswaController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.dataSiswaController" fx:id="rootAnchorPane">
    <children>
-      <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="200.0">
+      <VBox alignment="CENTER" prefWidth="180.0">
          <children>
             <VBox alignment="CENTER" prefHeight="600.0">
                <children>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
                      <children>
-                        <Label id="bold" fx:id="h1" text="SPP">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <padding>
-                              <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
-                           </padding>
-                        </Label>
+                        <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/Group%2028(2).png" />
+                           </image>
+                           <HBox.margin>
+                              <Insets left="20.0" right="20.0" />
+                           </HBox.margin>
+                        </ImageView>
                      </children>
                      <VBox.margin>
                         <Insets bottom="60.0" />
@@ -36,7 +36,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
                      <children>
-                        <Label id="bold" text="Main Menu" textFill="#454745">
+                        <Label id="semibold" text="Main Menu" textFill="#454745">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -58,7 +58,7 @@
                         </ImageView>
                         <Label id="medium" fx:id="h1" text="Dashboard" textFill="#212121">
                            <font>
-                              <Font size="17.0" />
+                              <Font size="15.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="10.0" />
@@ -84,7 +84,7 @@
                         </ImageView>
                         <Label id="medium" text="Data Siswa" textFill="#1d74de">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="15.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="10.0" />
@@ -110,7 +110,7 @@
                         </ImageView>
                         <Label id="medium" text="Data Tagihan" textFill="#454745">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="15.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="10.0" />
@@ -134,7 +134,7 @@
                         </ImageView>
                         <Label id="medium" text="Logout" textFill="#454745">
                            <font>
-                              <Font size="16.0" />
+                              <Font size="15.0" />
                            </font>
                            <HBox.margin>
                               <Insets left="10.0" />
@@ -155,16 +155,16 @@
             </VBox>
          </children>
       </VBox>
-      <VBox layoutX="200.0" prefHeight="600.0" prefWidth="800.0">
+      <VBox layoutX="180.0" prefHeight="600.0" prefWidth="820.0">
          <padding>
             <Insets left="60.0" right="60.0" top="40.0" />
          </padding>
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label id="semibold" text="Data Siswa">
+                  <Label id="semibold" text="Data Siswa" textFill="#212121">
                      <font>
-                        <Font name="System Bold" size="48.0" />
+                        <Font name="System Bold" size="40.0" />
                      </font>
                   </Label>
                   <Region HBox.hgrow="ALWAYS" />
@@ -185,14 +185,14 @@
                   </Button>
                </children>
             </HBox>
-            <TableView id="semibold" fx:id="tableSiswa" prefHeight="200.0" prefWidth="200.0">
+            <TableView id="semibold" fx:id="tableSiswa">
                <columns>
-                  <TableColumn fx:id="no" prefWidth="50.0" text="No" />
-                  <TableColumn fx:id="nama" prefWidth="113.0" text="Nama" />
-                  <TableColumn fx:id="kelas" prefWidth="96.0" text="Kelas" />
-                  <TableColumn fx:id="nis" minWidth="0.0" prefWidth="136.0" text="NIS" />
-                  <TableColumn fx:id="status" prefWidth="100.0" text="Status" />
-                  <TableColumn prefWidth="186.0" text="Aksi" />
+                  <TableColumn id="no" fx:id="no" prefWidth="50.0" style="-fx-alignment: CENTER;" text="No" />
+                  <TableColumn id="nama" fx:id="nama" prefWidth="113.0" style="-fx-alignment: CENTER;" text="Nama" />
+                  <TableColumn id="kelas" fx:id="kelas" prefWidth="96.0" style="-fx-alignment: CENTER;" text="Kelas" />
+                  <TableColumn id="nis" fx:id="nis" minWidth="0.0" prefWidth="136.0" style="-fx-alignment: CENTER;" text="NIS" />
+                  <TableColumn id="status" fx:id="status" prefWidth="100.0" style="-fx-alignment: CENTER;" text="Status" />
+                  <TableColumn prefWidth="204.0" style="-fx-alignment: CENTER;" text="Aksi" />
                </columns>
                <VBox.margin>
                   <Insets top="40.0" />

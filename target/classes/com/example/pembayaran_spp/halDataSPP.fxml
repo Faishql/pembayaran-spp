@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.SceneController">
+<AnchorPane fx:id="rootAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" prefWidth="180.0">
          <children>
@@ -46,14 +49,14 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" style="-fx-background-color: rgba(29, 116, 222, 0.2); -fx-background-radius: 0 12 12 0;">
+                  <HBox alignment="CENTER_LEFT">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../img/bx_bx-home-alt(1).png" />
+                              <Image url="@../../../img/bx_bx-home-alt.png" />
                            </image>
                         </ImageView>
-                        <Label id="medium" fx:id="h1" text="Dashboard" textFill="#1d74de">
+                        <Label id="medium" fx:id="h1" text="Dashboard" textFill="#212121">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -95,17 +98,17 @@
                         <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="200.0" style="-fx-background-radius: 0 12 12 0;">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="200.0" style="-fx-background-color: rgba(29, 116, 222, 0.2); -fx-background-radius: 0 12 12 0;">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../img/bx_bx-calendar-exclamation.png" />
+                              <Image url="@../../../img/bx_bx-calendar-exclamation(1).png" />
                            </image>
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </ImageView>
-                        <Label id="medium" text="Data SPP" textFill="#474747">
+                        <Label id="medium" text="Data SPP" textFill="#1d74de">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -152,67 +155,48 @@
             </VBox>
          </children>
       </VBox>
-      <VBox layoutX="200.0" prefHeight="600.0" prefWidth="800.0">
-         <children>
-            <Label id="semibold" text="Dashboard" textFill="#212121">
-               <font>
-                  <Font size="48.0" />
-               </font>
-            </Label>
-            <HBox>
-               <children>
-                  <VBox alignment="CENTER" prefHeight="160.0" prefWidth="260.0" style="-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0.0, 0.0); -fx-background-radius: 12; -fx-background-color: linear-gradient(to bottom right, #1D74DE, #2DB2EB);">
-                     <children>
-                        <Label id="bold" text="Total Siswa" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Label>
-                        <Label id="semibold" layoutX="30.0" layoutY="30.0" text="3" textFill="WHITE">
-                           <font>
-                              <Font size="48.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox alignment="CENTER" layoutX="10.0" layoutY="10.0" prefHeight="160.0" prefWidth="260.0" style="-fx-background-color: linear-gradient(to bottom right, #1D74DE, #2DB2EB); -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 10, 0.5, 0.0, 0.0); -fx-background-radius: 12;">
-                     <HBox.margin>
-                        <Insets left="40.0" />
-                     </HBox.margin>
-                     <children>
-                        <Label id="bold" text="Total Kelas" textFill="WHITE">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </Label>
-                        <Label id="semibold" layoutX="54.0" layoutY="81.0" text="1" textFill="WHITE">
-                           <font>
-                              <Font size="48.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="10.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-               </children>
-               <VBox.margin>
-                  <Insets top="60.0" />
-               </VBox.margin>
-            </HBox>
-         </children>
+      <VBox layoutX="180.0" prefHeight="600.0" prefWidth="820.0">
          <padding>
-            <Insets left="100.0" top="40.0" />
+            <Insets left="60.0" right="60.0" top="40.0" />
          </padding>
+         <children>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Label id="semibold" text="Data SPP" textFill="#212121">
+                     <font>
+                        <Font name="System Bold" size="40.0" />
+                     </font>
+                  </Label>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button id="semibold" mnemonicParsing="false" style="-fx-background-color: #1D74DE;" textFill="WHITE" visible="false">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/bx_bx-plus(1).png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
+            </HBox>
+            <TableView id="semibold" fx:id="tableSiswa">
+               <columns>
+                  <TableColumn id="no" fx:id="no" prefWidth="50.0" style="-fx-alignment: CENTER;" text="No" />
+                  <TableColumn id="kelas" fx:id="nama" prefWidth="170.0" style="-fx-alignment: CENTER;" text="kelas" />
+                  <TableColumn id="nominal" fx:id="kelas" prefWidth="248.0" style="-fx-alignment: CENTER;" text="Nominal" />
+                  <TableColumn prefWidth="231.0" style="-fx-alignment: CENTER;" text="Aksi" />
+               </columns>
+               <VBox.margin>
+                  <Insets top="40.0" />
+               </VBox.margin>
+            </TableView>
+         </children>
       </VBox>
    </children>
 </AnchorPane>

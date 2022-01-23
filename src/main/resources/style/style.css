@@ -33,3 +33,11 @@ Button#semibold{
 #bold{
     -fx-font-family: 'Poppins bold', sans-serif;
 }
+TableView#semibold{
+  -fx-font-size: 14px;
+  -fx-alignment: CENTER;
+}
+TableView#semibold TableColumn {
+  -fx-font-size: 16px;
+  
+}
