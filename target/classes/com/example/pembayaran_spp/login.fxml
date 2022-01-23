@@ -72,7 +72,7 @@
                               <Insets top="20.0" />
                            </VBox.margin>
                         </VBox>
-                        <Button id="semibold" fx:id="btnPrimary" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#tohaldashboardUser" prefHeight="40.0" prefWidth="240.0" style="-fx-border-radius: 6; -fx-background-color: #1D74DE;" text="LOGIN" textFill="WHITE">
+                        <Button id="semibold" fx:id="btnPrimary" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#tohaldashboardAdmin" prefHeight="40.0" prefWidth="240.0" style="-fx-border-radius: 6; -fx-background-color: #1D74DE;" text="LOGIN" textFill="WHITE">
                            <VBox.margin>
                               <Insets top="40.0" />
                            </VBox.margin>

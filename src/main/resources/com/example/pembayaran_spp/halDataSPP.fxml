@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rootAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.SceneController">
    <children>
       <VBox alignment="CENTER" prefWidth="180.0">
          <children>
@@ -49,7 +49,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT">
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#tohaldashboardAdminClick">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -72,7 +72,7 @@
                         <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" style="-fx-background-radius: 0 12 12 0;">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#tohalDataSiswa" style="-fx-background-radius: 0 12 12 0;">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -98,7 +98,7 @@
                         <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="200.0" style="-fx-background-color: rgba(29, 116, 222, 0.2); -fx-background-radius: 0 12 12 0;">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="200.0" onMouseClicked="#tohalDataSPP" style="-fx-background-color: rgba(29, 116, 222, 0.2); -fx-background-radius: 0 12 12 0;">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -125,7 +125,7 @@
                      </padding>
                   </HBox>
                   <Region VBox.vgrow="ALWAYS" />
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0" onMouseClicked="#logout">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>

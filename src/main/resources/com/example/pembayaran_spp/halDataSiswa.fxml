@@ -49,7 +49,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT">
+                  <HBox alignment="CENTER_LEFT" onMouseClicked="#tohaldashboardAdminClick">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -72,7 +72,7 @@
                         <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" style="-fx-background-color: rgba(29, 116, 222, 0.2); -fx-background-radius: 0 12 12 0;">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" onMouseClicked="#tohalDataSiswa" style="-fx-background-color: rgba(29, 116, 222, 0.2); -fx-background-radius: 0 12 12 0;">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -98,7 +98,7 @@
                         <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="200.0">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="200.0" onMouseClicked="#tohalDataSPP">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -108,7 +108,7 @@
                               <Insets />
                            </HBox.margin>
                         </ImageView>
-                        <Label id="medium" text="Data Tagihan" textFill="#454745">
+                        <Label id="medium" text="Data SPP" textFill="#454745">
                            <font>
                               <Font size="15.0" />
                            </font>
@@ -125,7 +125,7 @@
                      </padding>
                   </HBox>
                   <Region VBox.vgrow="ALWAYS" />
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0" onMouseClicked="#back">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="220.0" onMouseClicked="#logout">
                      <children>
                         <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                            <image>
