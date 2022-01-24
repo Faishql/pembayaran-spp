@@ -16,20 +16,27 @@
       <HBox prefHeight="600.0" prefWidth="900.0">
          <children>
             <VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="600.0" prefWidth="450.0">
-               <children>            
-                  <VBox alignment="CENTER_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="237.0" prefWidth="240.0">
+               <children>
+                  <HBox>
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../img/Group%2028(2).png" />
+                              <Image url="@../../../img/Group%2028(4).png" />
                            </image>
                         </ImageView>
-                        <Label id="semibold" fx:id="h1" alignment="CENTER" minHeight="-Infinity" text="Welcome To SPP" textFill="#454745" wrapText="true">
+                     </children>
+                     <padding>
+                        <Insets left="40.0" right="40.0" />
+                     </padding>
+                  </HBox>            
+                  <VBox alignment="CENTER_LEFT" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="237.0" prefWidth="240.0">
+                     <children>
+                        <Label id="bold" fx:id="h1" alignment="CENTER" minHeight="-Infinity" text="Happy Paying" textFill="#454745" wrapText="true">
                            <font>
                               <Font size="32.0" />
                            </font>
                            <VBox.margin>
-                              <Insets top="40.0" />
+                              <Insets />
                            </VBox.margin>
                         </Label>
                         <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="116.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="240.0">
@@ -49,7 +56,7 @@
                               </TextField>
                            </children>
                            <VBox.margin>
-                              <Insets top="40.0" />
+                              <Insets top="60.0" />
                            </VBox.margin>
                         </VBox>
                         <VBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="240.0">
@@ -81,6 +88,9 @@
                            </font>
                         </Button>
                      </children>
+                     <VBox.margin>
+                        <Insets top="40.0" />
+                     </VBox.margin>
                   </VBox>
                </children>
                <HBox.margin>
