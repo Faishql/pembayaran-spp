@@ -18,16 +18,16 @@ public class SceneController {
  private Parent root;
  
     public void tohaldashboardUser(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("dashboardUser.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("dashboardUser2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1000, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
     }
     public void tohaldashboardAdmin(ActionEvent event) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("dashboardAdmin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("dashboardAdmin2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1000, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
     }
@@ -35,9 +35,9 @@ public class SceneController {
     @FXML
     void tohaldashboardUserClick(MouseEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("dashboardUser.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("dashboardUser2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1000, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
            
@@ -46,9 +46,9 @@ public class SceneController {
     @FXML
     void logout(MouseEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("login2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 900, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
            
@@ -57,9 +57,9 @@ public class SceneController {
     @FXML
     void tohalBayarSPP(MouseEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("halBayarSPP.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("halBayarSPP2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1000, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
            
@@ -68,9 +68,9 @@ public class SceneController {
     @FXML
     void tohalDataDiriSiswa(MouseEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("halDataDiriSiswa.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("halDataDiriSiswa2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1000, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
            
@@ -79,9 +79,9 @@ public class SceneController {
     @FXML
     void tohaldashboardAdminClick(MouseEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("dashboardAdmin.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("dashboardAdmin2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1000, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
            
@@ -90,9 +90,9 @@ public class SceneController {
     @FXML
     void tohalDataSiswa(MouseEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("halDataSiswa.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("halDataSiswa2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1000, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
            
@@ -101,9 +101,9 @@ public class SceneController {
     @FXML
     void tohalDataSPP(MouseEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("halDataSPP.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("halDataSPP2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1000, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
            

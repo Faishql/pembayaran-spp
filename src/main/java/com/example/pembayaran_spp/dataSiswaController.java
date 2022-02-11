@@ -95,7 +95,7 @@ public class dataSiswaController implements Initializable{
         
         Parent root = FXMLLoader.load(getClass().getResource("dashboardAdmin.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1000, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
            
@@ -104,9 +104,9 @@ public class dataSiswaController implements Initializable{
     @FXML
     void tohalDataSiswa(MouseEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("halDataSiswa.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("halDataSiswa2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1000, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
            
@@ -115,9 +115,9 @@ public class dataSiswaController implements Initializable{
     @FXML
     void tohalDataSPP(MouseEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("halDataSPP.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("halDataSPP2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 1000, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
            
@@ -126,9 +126,9 @@ public class dataSiswaController implements Initializable{
     @FXML
     void logout(MouseEvent event) throws IOException {
         
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("login2.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root, 900, 600);
+        scene = new Scene(root, 1366, 768);
         stage.setScene(scene);
         stage.show();
            

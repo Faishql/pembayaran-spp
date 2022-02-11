@@ -12,8 +12,8 @@ public class index extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 900, 600);
+        FXMLLoader fxmlLoader = new FXMLLoader(index.class.getResource("login2.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1366, 768);
         stage.setResizable(false);
         stage.setTitle("Login");
         stage.setScene(scene);
