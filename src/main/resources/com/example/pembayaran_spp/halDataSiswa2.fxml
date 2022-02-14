@@ -49,7 +49,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" maxWidth="-Infinity" onMouseClicked="#tohaldashboardAdminClick" prefWidth="200.0" style="-fx-background-radius: 0 16 16 0;">
+                  <HBox alignment="CENTER_LEFT" maxWidth="-Infinity" onMouseClicked="#toHalDashboard" prefWidth="200.0" style="-fx-background-radius: 0 16 16 0;">
                      <children>
                         <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -72,7 +72,7 @@
                         <Insets bottom="20.0" left="30.0" right="20.0" top="20.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" onMouseClicked="#tohalDataSiswa" prefWidth="200.0" style="-fx-background-radius: 0 12 12 0; -fx-background-color: rgba(29, 116, 222, 0.2);">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" onMouseClicked="#toHalDataSiswa" prefWidth="200.0" style="-fx-background-radius: 0 12 12 0; -fx-background-color: rgba(29, 116, 222, 0.2);">
                      <children>
                         <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -98,7 +98,7 @@
                         <Insets bottom="20.0" left="30.0" right="20.0" top="20.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="200.0" maxWidth="-Infinity" onMouseClicked="#tohalDataSPP" prefWidth="200.0" style="-fx-background-radius: 0 12 12 0;">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="200.0" maxWidth="-Infinity" onMouseClicked="#toHalDataSPP" prefWidth="200.0" style="-fx-background-radius: 0 12 12 0;">
                      <children>
                         <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -184,9 +184,9 @@
             <TableView id="semibold" fx:id="tableSiswa" style="-fx-border-color: #fff; -fx-background-color: transparent; -fx-border-radius: 20;">
                <columns>
                   <TableColumn id="no" fx:id="no" prefWidth="67.0" style="-fx-alignment: CENTER; -fx-size: 40;" text="No" />
+                  <TableColumn id="nis" fx:id="nis" minWidth="0.0" prefWidth="181.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="NIS" />
                   <TableColumn id="nama" fx:id="nama" prefWidth="182.0" style="-fx-alignment: CENTER; -fx-size: 40;" text="Nama" />
                   <TableColumn id="kelas" fx:id="kelas" prefWidth="142.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="Kelas" />
-                  <TableColumn id="nis" fx:id="nis" minWidth="0.0" prefWidth="181.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="NIS" />
                   <TableColumn id="status" fx:id="status" prefWidth="116.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="Status" />
                   <TableColumn prefWidth="256.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="Aksi" />
                </columns>

@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.SceneController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.bayarSPPController">
    <children>
       <VBox alignment="CENTER" prefHeight="768.0" prefWidth="240.0">
          <children>
@@ -47,7 +47,7 @@
                         <Insets bottom="10.0" />
                      </VBox.margin>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" maxWidth="-Infinity" onMouseClicked="#tohaldashboardUser" prefWidth="200.0" style="-fx-background-radius: 0 16 16 0;">
+                  <HBox alignment="CENTER_LEFT" maxWidth="-Infinity" onMouseClicked="#toHalDashboard" prefWidth="200.0" style="-fx-background-radius: 0 16 16 0;">
                      <children>
                         <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -70,7 +70,7 @@
                         <Insets bottom="20.0" left="30.0" right="20.0" top="20.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" onMouseClicked="#tohalBayarSPP" prefWidth="200.0" style="-fx-background-radius: 0 12 12 0; -fx-background-color: rgba(29, 116, 222, 0.2);">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" onMouseClicked="#toHalBayarSPP" prefWidth="200.0" style="-fx-background-radius: 0 12 12 0; -fx-background-color: rgba(29, 116, 222, 0.2);">
                      <children>
                         <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -96,7 +96,7 @@
                         <Insets bottom="20.0" left="30.0" right="20.0" top="20.0" />
                      </padding>
                   </HBox>
-                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="200.0" maxWidth="-Infinity" onMouseClicked="#tohalDataDiriSiswa" prefWidth="200.0" style="-fx-background-radius: 0 12 12 0;">
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="200.0" maxWidth="-Infinity" onMouseClicked="#toHalDataDiriSiswa" prefWidth="200.0" style="-fx-background-radius: 0 12 12 0;">
                      <children>
                         <ImageView fitHeight="26.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -163,13 +163,14 @@
                   </Label>
                </children>
             </HBox>
-            <TableView id="semibold" fx:id="tableSiswa" style="-fx-border-color: #fff; -fx-background-color: transparent; -fx-border-radius: 20;">
+            <TableView id="regular" fx:id="tableBayarSPP" fixedCellSize="-2.0" style="-fx-border-color: #fff; -fx-background-color: tra; -fx-border-radius: 20; -fx-color: #fff;">
                <columns>
-                  <TableColumn id="no" fx:id="no" prefWidth="67.0" style="-fx-alignment: CENTER; -fx-size: 40;" text="No" />
-                  <TableColumn id="nama" fx:id="nama" prefWidth="191.0" style="-fx-alignment: CENTER; -fx-size: 40;" text="Bulan" />
-                  <TableColumn id="kelas" fx:id="kelas" prefWidth="210.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="Nominal" />
-                  <TableColumn id="nis" fx:id="nis" minWidth="0.0" prefWidth="196.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="Status" />
-                  <TableColumn prefWidth="280.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="Aksi" />
+                  <TableColumn id="semibold" fx:id="no" prefWidth="67.0" sortable="false" style="-fx-alignment: CENTER; -fx-size: 40;" text="No" />
+                  <TableColumn id="semibold" fx:id="nis" prefWidth="156.0" sortable="false" style="-fx-alignment: CENTER; -fx-size: 40;" text="NIS" />
+                  <TableColumn id="semibold" fx:id="nama" prefWidth="182.0" sortable="false" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="Nama" />
+                  <TableColumn id="semibold" fx:id="kelas" minWidth="0.0" prefWidth="127.0" sortable="false" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="Kelas" />
+                  <TableColumn id="semibold" fx:id="status" prefWidth="156.0" sortable="false" style="-fx-alignment: CENTER; -fx-size: 40;" text="Status" />
+<!--                  <TableColumn fx:id="aksi" prefWidth="256.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="Aksi" />-->
                </columns>
                <VBox.margin>
                   <Insets top="60.0" />

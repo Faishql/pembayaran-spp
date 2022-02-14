@@ -1,34 +1,37 @@
 package com.example.pembayaran_spp;
 
-public class siswa {
+public class Siswa {
     
-    private Integer no;
+    private int no;
+    private String nis;
     private String nama;
     private String kelas;
-    private String nis;
     private String status;
 
-    public siswa(Integer no, String nama, String kelas, String nis, String status)
-    {
+    public Siswa(int no, String nis, String nama, String kelas, String status) {
         this.no = no;
+        this.nis = nis;
         this.nama = nama;
         this.kelas = kelas;
-        this.nis = nis;
         this.status = status;
     }
 
-    public Integer getNo() {
+    public int getNo() {
         return no;
     }
-    public String getNama() {
-        return nama;
-    }
-    public String getKelas() {
-        return kelas;
-    }
+
     public String getNis() {
         return nis;
     }
+
+    public String getNama() {
+        return nama;
+    }
+
+    public String getKelas() {
+        return kelas;
+    }
+
     public String getStatus() {
         return status;
     }

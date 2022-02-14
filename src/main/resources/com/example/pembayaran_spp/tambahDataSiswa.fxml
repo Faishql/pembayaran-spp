@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.tambahDataSiswaController">
    <children>
       <VBox layoutX="47.0" layoutY="38.0" stylesheets="@../../../style/style.css">
          <children>
@@ -27,7 +27,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="40.0">
+                  <TextField prefHeight="40.0" fx:id="tfNama">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -40,10 +40,12 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Label>
-                  <MenuButton id="semibold" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="X" textFill="#212121">
+                  <MenuButton id="semibold" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="" textFill="#212121">
+
                     <items>
-                      <MenuItem mnemonicParsing="false" text="XI" />
-                      <MenuItem mnemonicParsing="false" text="XII" />
+                       <MenuItem mnemonicParsing="false" text="X" />
+                       <MenuItem mnemonicParsing="false" text="XI" />
+                       <MenuItem mnemonicParsing="false" text="XII" />
                     </items>
                      <font>
                         <Font size="18.0" />
@@ -60,7 +62,7 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField prefHeight="40.0">
+                  <TextField prefHeight="40.0" fx:id="tfNIS">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>

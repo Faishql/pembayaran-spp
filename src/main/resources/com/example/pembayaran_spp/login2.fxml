@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.loginController">
    <children>
       <HBox alignment="CENTER" prefHeight="768.0" prefWidth="1366.0">
          <children>
@@ -43,7 +43,7 @@
                               </Label>
                               <VBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="116.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="240.0">
                                  <children>
-                                    <Label id="medium" fx:id="labelField" graphicTextGap="0.0" text="Username" textFill="#3E3D3D">
+                                    <Label id="medium" graphicTextGap="0.0" text="Username" textFill="#3E3D3D">
                                        <font>
                                           <Font size="13.0" />
                                        </font>
@@ -51,7 +51,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField id="medium" minWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Username" style="-fx-border-radius: 6;">
+                                    <TextField id="medium" fx:id="username" minWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Username" style="-fx-border-radius: 6;">
                                        <font>
                                           <Font size="12.0" />
                                        </font>
@@ -71,7 +71,7 @@
                                           <Insets bottom="5.0" />
                                        </VBox.margin>
                                     </Label>
-                                    <TextField id="medium" minWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Password" style="-fx-border-radius: 6;">
+                                    <TextField id="medium" fx:id="password" minWidth="-Infinity" prefHeight="40.0" prefWidth="240.0" promptText="Password" style="-fx-border-radius: 6;">
                                        <font>
                                           <Font size="12.0" />
                                        </font>
@@ -81,7 +81,7 @@
                                     <Insets top="30.0" />
                                  </VBox.margin>
                               </VBox>
-                              <Button id="semibold" fx:id="btnPrimary" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#tohaldashboardUser" prefHeight="40.0" prefWidth="240.0" style="-fx-border-radius: 6; -fx-background-color: linear-gradient(to bottom right, #1D74DE, #2DB2EB); -fx-effect: dropshadow(two-pass-box, rgba(61, 136, 255, 0.67), 50, 0, 0, 0);" text="Login" textFill="WHITE" textOverrun="CLIP">
+                              <Button onAction="#loginButton" id="semibold" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="240.0" style="-fx-border-radius: 6; -fx-background-color: linear-gradient(to bottom right, #1D74DE, #2DB2EB); -fx-effect: dropshadow(two-pass-box, rgba(61, 136, 255, 0.67), 50, 0, 0, 0);" text="Login" textFill="WHITE" textOverrun="CLIP">
                                  <VBox.margin>
                                     <Insets top="40.0" />
                                  </VBox.margin>
