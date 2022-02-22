@@ -2,6 +2,8 @@ package com.example.pembayaran_spp;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
@@ -49,7 +51,6 @@ public class dataDiriSiswaController extends helpers implements Initializable {
             kelasSiswa.setText(res.getString("kelas"));
             nisSiswa.setText(res.getString("nis"));
 
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -69,7 +70,12 @@ public class dataDiriSiswaController extends helpers implements Initializable {
     }
 
     public void logout(MouseEvent event) throws IOException {
-        changePageMouse(event, "login2");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Logout ?", ButtonType.YES, ButtonType.CANCEL);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            changePageMouse(event, "login2");
+        }
     }
 
 

@@ -1,16 +1,16 @@
 package com.example.pembayaran_spp;
 
+import javafx.beans.property.ReadOnlyObjectWrapper;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.util.Callback;
 
 import java.io.IOException;
@@ -21,30 +21,29 @@ import java.util.ResourceBundle;
 public class bayarSPPController extends helpers implements Initializable{
 
     @FXML
-    private TableView<Siswa> tableBayarSPP;
+    private TableView<Bayar> tableBayarSPP;
 
     @FXML
-    private TableColumn<Siswa, Integer> no;
+    private TableColumn<SPP, String> no;
 
     @FXML
-    private TableColumn<Siswa, String> nama;
+    private TableColumn<Bayar, String> kelas;
 
     @FXML
-    private TableColumn<Siswa, String> kelas;
+    private TableColumn<Bayar, String> nominal;
 
     @FXML
-    private TableColumn<Siswa, String> nis;
+    private TableColumn<Bayar, String> status;
 
     @FXML
-    private TableColumn<Siswa, String> status;
+    private TableColumn<Bayar, String> tanggal;
 
-    @FXML
-    private TableColumn<?, ?> aksi;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        showSiswa();
+        showBayar();
+        addButtonToTable();
     }
 
 
@@ -59,75 +58,134 @@ public class bayarSPPController extends helpers implements Initializable{
         }
     }
 
-    public ObservableList<Siswa> getSiswaList(){
-        ObservableList<Siswa> siswaList = FXCollections.observableArrayList();
+    public ObservableList<Bayar> getBayarList(){
+        ObservableList<Bayar> bayarList = FXCollections.observableArrayList();
         Connection connection = getConnection();
-        String query = "SELECT * FROM siswa";
+        String query = "SELECT * FROM siswa INNER JOIN spp ON siswa.kelas = spp.kelas WHERE nis = '" +session.username +"'";
         Statement st;
         ResultSet rs;
 
         try {
             st = connection.createStatement();
             rs = st.executeQuery(query);
-            Siswa siswa;
+            Bayar bayar;
 
             while (rs.next()) {
-                siswa = new Siswa(rs.getInt("id_siswa"), rs.getString("nis"),
-                        rs.getString("nama"), rs.getString("kelas"), rs.getString("status"));
-                siswaList.add(siswa);
+                bayar = new Bayar( rs.getString("kelas"), rs.getString("nominal_spp"), rs.getString("status"), rs.getString("tanggal"));
+                bayarList.add(bayar);
             }
 
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return  siswaList;
+        return  bayarList;
     }
 
-    public void showSiswa() {
-        ObservableList<Siswa> list = getSiswaList();
+    public void showBayar() {
+        ObservableList<Bayar> list = getBayarList();
 
-        no.setCellValueFactory(new PropertyValueFactory<Siswa, Integer>("no"));
-        nis.setCellValueFactory(new PropertyValueFactory<Siswa, String>("nis"));
-        nama.setCellValueFactory(new PropertyValueFactory<Siswa, String>("nama"));
-        kelas.setCellValueFactory(new PropertyValueFactory<Siswa, String>("kelas"));
-        status.setCellValueFactory(new PropertyValueFactory<Siswa, String>("status"));
+        no.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<SPP, String>, ObservableValue<String>>() {
+            @Override public ObservableValue<String> call(TableColumn.CellDataFeatures<SPP, String> p) {
+                return new ReadOnlyObjectWrapper(tableBayarSPP.getItems().indexOf(p.getValue()) + 1 +  "");
+            }
+        });
+        kelas.setCellValueFactory(new PropertyValueFactory<Bayar, String>("kelas"));
+        tanggal.setCellValueFactory(new PropertyValueFactory<Bayar, String>("tanggal"));
+        nominal.setCellValueFactory(new PropertyValueFactory<Bayar, String>("nominal"));
+        status.setCellValueFactory(new PropertyValueFactory<Bayar, String>("status"));
 
 //        addButtonToTable();
 
         tableBayarSPP.setItems(list);
     }
 
-//    private void addButtonToTable() {
-//        TableColumn<Siswa, Void> aksi = new TableColumn("Aksi");
+    private void addButtonToTable() {
+        TableColumn aksi = new TableColumn("aksi");
+        aksi.setStyle("-fx-alignment: CENTER;");
+
+        Callback<TableColumn<Bayar, Void>, TableCell<Bayar, Void>> cellFactory = new Callback<TableColumn<Bayar, Void>, TableCell<Bayar, Void>>() {
+            @Override
+            public TableCell call(final TableColumn param) {
+                final TableCell cell = new TableCell() {
+
+                    private final Button btnBayar = new Button("Bayar");
+
+                    {
+                        btnBayar.setStyle("-fx-background-color: #01937C; -fx-text-fill: #fff;");
+                        btnBayar.setOnAction((ActionEvent event) -> {
+
+                            String lunas = "lunas";
+                            Integer idKosong = null;
+                            Integer idUpdate = 36;
+                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bayar ?", ButtonType.YES, ButtonType.CANCEL);
+                            alert.setTitle("Konformasi Bayar");
+                            alert.showAndWait();
+
+                            if (alert.getResult() == ButtonType.YES) {
+                                String query = "UPDATE siswa SET  status = '" + lunas + "' WHERE id_siswa = " + idUpdate +"";
+                                executeQuery(query);
+                            }
+
+
+                        });
+                    }
+                    private final Button btnCetak = new Button("Bayar");
+
+                    {
+
+                    }
+
+                    @Override
+                    protected void updateItem(Object item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (empty) {
+                            setGraphic(null);
+                        } else {
+                            HBox hbox = new HBox(btnBayar);
+                            setGraphic(hbox);
+                        }
+                    }
+
+                };
+                return cell;
+            }
+        };
+
+        aksi.setCellFactory(cellFactory);
+
+        tableBayarSPP.getColumns().add(aksi);
+
+    }
+
+    private void executeQuery(String query) {
+        Connection connection = getConnection();
+        Statement st;
+
+
+        try {
+            st = connection.createStatement();
+
+            int i = st.executeUpdate(query);
+            if (i > 0) {
+
+//                Stage stage = (Stage) insertBtn.getScene().getWindow();
 //
-//        Callback<TableColumn<Siswa, Void>, TableCell<Siswa, Void>> cellFactory = new Callback<TableColumn<Siswa, Void>, TableCell<Siswa, Void>>() {
-//            @Override
-//            public TableCell<Siswa, Void> call(final TableColumn<Siswa, Void> param) {
-//                final TableCell<Siswa, Void> cell = new TableCell<Siswa, Void>() {
-//
-//                    private final Button btn = new Button("Action");
-//
-//                    {
-//                        btn.setOnAction((ActionEvent event) -> {
-//                            Siswa Siswa = getTableView().getItems().get(getIndex());
-//                            System.out.println("selectedSiswa: " + Siswa);
-//                        });
-//                    }
-//
-//                    @Override
-//                    public void updateItem(Void item, boolean empty) {
-//                        super.updateItem(item, empty);
-//                        if (empty) {
-//                            setGraphic(null);
-//                        } else {
-//                            setGraphic(btn);
-//                        }
-//                    }
-//                };
-//                return cell;
-//            }
-//        };
-//    }
+//                stage.close();
+                System.out.println("success");
+
+            } else {
+                System.out.println("stuck somewhere");
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void refreshTable(ActionEvent event) {
+        tableBayarSPP.setItems(getBayarList());
+        tableBayarSPP.refresh();
+    }
 
     public void toHalDashboard(MouseEvent event) throws IOException {
         changePageMouse(event, "dashboardUser2");
@@ -142,7 +200,12 @@ public class bayarSPPController extends helpers implements Initializable{
     }
 
     public void logout(MouseEvent event) throws IOException {
-        changePageMouse(event, "login2");
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Logout ?", ButtonType.YES, ButtonType.CANCEL);
+        alert.showAndWait();
+
+        if (alert.getResult() == ButtonType.YES) {
+            changePageMouse(event, "login2");
+        }
     }
 
 

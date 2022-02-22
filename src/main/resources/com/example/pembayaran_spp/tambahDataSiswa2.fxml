@@ -2,32 +2,31 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="420.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" >
+<AnchorPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.tambahDataSiswaController">
    <children>
-      <VBox layoutX="47.0" layoutY="38.0" stylesheets="@../../../style/style.css">
+      <VBox layoutX="47.0" layoutY="38.0" stylesheets="@../../../style/style.css" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="60.0">
          <children>
-            <Label id="semibold" text="Tambah Data Siswa" textFill="#212121">
+            <Label id="bold" fx:id="labelModal" text="" textFill="#333">
                <font>
                   <Font size="32.0" />
                </font>
             </Label>
             <VBox>
                <children>
-                  <Label id="medium" text="Nama" textFill="#212121">
+                  <TextField fx:id="tfId" disable="true" layoutX="10.0" layoutY="43.0" prefHeight="40.0" visible="false" />
+                  <Label id="medium" text="Nama" textFill="#333">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <TextField prefHeight="40.0">
+                  <TextField fx:id="tfNama" prefHeight="40.0">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
@@ -40,19 +39,12 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Label>
-                  <MenuButton id="semibold" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" text="X" textFill="#212121">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="XI" />
-                      <MenuItem mnemonicParsing="false" text="XII" />
-                    </items>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
+                  <ComboBox fx:id="dwKelas" maxWidth="1.7976931348623157E308" prefHeight="40.0" style="-fx-background-color: transparent; -fx-border-width: 1px; -fx-border-color: #c4c4c4; -fx-border-radius: 3px;">
                      <VBox.margin>
                         <Insets top="10.0" />
                      </VBox.margin>
-                  </MenuButton>
-                  <Label id="medium" text="NIS" textFill="#212121">
+                  </ComboBox>
+                  <Label id="medium" text="NIS" textFill="#333">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -60,7 +52,7 @@
                         <Insets top="30.0" />
                      </VBox.margin>
                   </Label>
-                  <TextField prefHeight="40.0">
+                  <TextField fx:id="tfNIS" prefHeight="40.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
@@ -68,7 +60,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </TextField>
-                  <Button id="medium" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="40.0" style="-fx-background-color: #1D74DE;" text="Button" textFill="WHITE">
+                  <Button id="medium" fx:id="buttonMain" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="50.0" style="-fx-background-color: linear-gradient(to bottom right, #1D74DE, #2DB2EB);" text="SUBMIT" textFill="WHITE">
                      <font>
                         <Font size="14.0" />
                      </font>

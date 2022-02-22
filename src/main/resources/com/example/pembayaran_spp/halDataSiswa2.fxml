@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="rootAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.dataSiswaController">
+<AnchorPane fx:id="rootAnchorPane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1366.0" style="-fx-background-color: #fff;" stylesheets="@../../../style/style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.pembayaran_spp.dataSiswaController">
    <children>
       <VBox alignment="CENTER" prefHeight="768.0" prefWidth="240.0">
          <children>
@@ -36,7 +36,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxWidth="-Infinity" prefWidth="200.0">
                      <children>
-                        <Label id="semibold" text="Main Menu" textFill="#454745">
+                        <Label id="semibold" text="Main Menu" textFill="#333">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -131,7 +131,7 @@
                               <Image url="@../../../img/bx_bx-log-out.png" />
                            </image>
                         </ImageView>
-                        <Label id="medium" text="Logout" textFill="#454745">
+                        <Label id="medium" text="Logout" textFill="#333">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -158,13 +158,13 @@
          <children>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <Label id="semibold" text="Data Siswa" textFill="#212121">
+                  <Label id="semibold" text="Data Siswa" textFill="#333">
                      <font>
                         <Font name="System Bold" size="56.0" />
                      </font>
                   </Label>
                   <Region HBox.hgrow="ALWAYS" />
-                  <Button id="semibold" layoutX="956.0" layoutY="20.0" mnemonicParsing="false" onAction="#openTambahSiswa" style="-fx-background-color: linear-gradient(to bottom right, #1D74DE, #2DB2EB);" textFill="WHITE">
+                  <Button id="semibold" fx:id="openTambah" layoutX="956.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleButtonAction" style="-fx-background-color: linear-gradient(to bottom right, #1D74DE, #2DB2EB); -fx-background-radius: 30;" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="16.0" />
                      </font>
@@ -179,16 +179,33 @@
                         </ImageView>
                      </graphic>
                   </Button>
+                  <Button id="semibold" layoutX="956.0" layoutY="20.0" mnemonicParsing="false" onAction="#refreshTable" style="-fx-background-color: #FFF; -fx-background-radius: 30; -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 6, 0.5, 0.0, 0.0);" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
+                     </padding>
+                     <graphic>
+                        <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../img/feather_refresh-ccw2.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Button>
                </children>
             </HBox>
-            <TableView id="semibold" fx:id="tableSiswa" style="-fx-border-color: #fff; -fx-background-color: transparent; -fx-border-radius: 20;">
+            <TableView id="semibold" fx:id="tableSiswa" fixedCellSize="-2.0" style="-fx-border-color: #fff; -fx-border-radius: 20; -fx-background-color: #fff; -fx-selection-bar: #c4c4c4;">
                <columns>
-                  <TableColumn id="no" fx:id="no" prefWidth="67.0" style="-fx-alignment: CENTER; -fx-size: 40;" text="No" />
-                  <TableColumn id="nis" fx:id="nis" minWidth="0.0" prefWidth="181.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="NIS" />
-                  <TableColumn id="nama" fx:id="nama" prefWidth="182.0" style="-fx-alignment: CENTER; -fx-size: 40;" text="Nama" />
-                  <TableColumn id="kelas" fx:id="kelas" prefWidth="142.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="Kelas" />
-                  <TableColumn id="status" fx:id="status" prefWidth="116.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="Status" />
-                  <TableColumn prefWidth="256.0" style="-fx-alignment: CENTER; -fx-size: 40; -fx-text-fill: #fff;" text="Aksi" />
+                  <TableColumn id="semibold" fx:id="no" maxWidth="-1.0" minWidth="60.0" prefWidth="60.0" resizable="false" sortable="false" style="-fx-alignment: CENTER; -fx-size: 60;" text="NO" />
+                  <TableColumn id="semibold" fx:id="nis" minWidth="200.0" prefWidth="200.0" resizable="false" sortable="false" style="-fx-alignment: CENTER; -fx-size: 60;" text="NIS" />
+                  <TableColumn id="semibold" fx:id="nama" minWidth="200.0" prefWidth="200.0" resizable="false" sortable="false" style="-fx-alignment: CENTER; -fx-size: 60;" text="NAMA" />
+                  <TableColumn id="semibold" fx:id="kelas" maxWidth="-Infinity" minWidth="150.0" prefWidth="150.0" resizable="false" sortable="false" style="-fx-alignment: CENTER; -fx-size: 60;" text="KELAS" />
+                  <TableColumn id="semibold" fx:id="status" maxWidth="-Infinity" minWidth="150.0" prefWidth="150.0" resizable="false" sortable="false" style="-fx-alignment: CENTER; -fx-size: 60;" text="STATUS" />
                </columns>
                <VBox.margin>
                   <Insets top="60.0" />
