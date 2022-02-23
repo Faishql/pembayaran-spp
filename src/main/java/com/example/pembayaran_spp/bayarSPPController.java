@@ -116,7 +116,7 @@ public class bayarSPPController extends helpers implements Initializable{
 
                             String lunas = "lunas";
                             Integer idKosong = null;
-                            Integer idUpdate = 36;
+                            String idUpdate = tableBayarSPP.getSelectionModel().getSelectedItem().getTanggal();
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bayar ?", ButtonType.YES, ButtonType.CANCEL);
                             alert.setTitle("Konformasi Bayar");
                             alert.showAndWait();
@@ -124,6 +124,12 @@ public class bayarSPPController extends helpers implements Initializable{
                             if (alert.getResult() == ButtonType.YES) {
                                 String query = "UPDATE siswa SET  status = '" + lunas + "' WHERE id_siswa = " + idUpdate +"";
                                 executeQuery(query);
+//                                UPDATE t1
+//                                SET t1.CalculatedColumn = t2.[Calculated Column]
+//                                FROM dbo.Table1 AS t1
+//                                INNER JOIN dbo.Table2 AS t2
+//                                ON t1.CommonField = t2.[Common Field]
+//                                WHERE t1.BatchNo = '110';
                             }
 
 

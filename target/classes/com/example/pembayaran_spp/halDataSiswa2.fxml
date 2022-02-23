@@ -199,7 +199,7 @@
                   </Button>
                </children>
             </HBox>
-            <TableView id="semibold" fx:id="tableSiswa" fixedCellSize="-2.0" style="-fx-border-color: #fff; -fx-border-radius: 20; -fx-background-color: #fff; -fx-selection-bar: #c4c4c4;">
+            <TableView id="semibold" fx:id="tableSiswa" fixedCellSize="-2.0" style="-fx-background-color: #fff;">
                <columns>
                   <TableColumn id="semibold" fx:id="no" maxWidth="-1.0" minWidth="60.0" prefWidth="60.0" resizable="false" sortable="false" style="-fx-alignment: CENTER; -fx-size: 60;" text="NO" />
                   <TableColumn id="semibold" fx:id="nis" minWidth="200.0" prefWidth="200.0" resizable="false" sortable="false" style="-fx-alignment: CENTER; -fx-size: 60;" text="NIS" />

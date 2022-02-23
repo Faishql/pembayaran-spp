@@ -2,18 +2,16 @@ package com.example.pembayaran_spp;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ResourceBundle;
 
@@ -21,6 +19,9 @@ public class tambahDataSiswaController extends dataSiswaController implements In
 
     @FXML
     private ComboBox dwKelas;
+
+    @FXML
+    private ComboBox dwStatus;
 
     @FXML
     private Label labelModal;
@@ -40,7 +41,9 @@ public class tambahDataSiswaController extends dataSiswaController implements In
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        dwKelas.setItems(List);
+
+        dwKelas.setItems(getKelasList());
+        dwStatus.setItems(statusOption);
 
         if (session.getModal == "tambah" ) {
             labelModal.setText("Tambah Data Siswa");
@@ -49,13 +52,19 @@ public class tambahDataSiswaController extends dataSiswaController implements In
         } else if(session.getModal == "update" ) {
             labelModal.setText("Ubah Data Siswa");
             buttonMain.setText("Ubah");
+
+            tfNama.setText(session.selectedNamaSiswa);
+            dwKelas.setValue(session.selectedKelasSiswa);
+            tfNIS.setText(session.selectedNisSiswa);
+            dwStatus.setValue(session.selectedStatusSiswa);
+
             buttonMain.setOnAction(e->updateSiswa()) ;
         }
     }
 
 
 
-    ObservableList<String> List = FXCollections.observableArrayList("X RPL", "X MM", "X ANI");
+    ObservableList<String> statusOption = FXCollections.observableArrayList("Lunas", "Belum Lunas");
 
     public Connection getConnection(){
         Connection connection;
@@ -68,22 +77,59 @@ public class tambahDataSiswaController extends dataSiswaController implements In
         }
     }
 
+    public ObservableList getKelasList(){
+        ObservableList sppList = FXCollections.observableArrayList();
+        Connection connection = getConnection();
+
+        String query = "SELECT * FROM spp";
+        Statement st;
+        ResultSet rs;
+
+        try {
+
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            String spp;
+
+            while (rs.next()) {
+                spp = rs.getString("kelas");
+                sppList.add(spp);
+            }
+
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return sppList;
+    }
+
     public void insertSiswa() {
-        String lunas = "belum lunas";
         Integer idKosong = null;
 
-        String query = "INSERT INTO siswa VALUES(" + idKosong + ",'" + tfNIS.getText() + "','" + tfNama.getText() + "','" + dwKelas.getValue() + "','"+ lunas +"')";
-        executeQuery(query);
+        if (tfNIS.getText() == null || tfNIS.getText().trim().isEmpty() || tfNama.getText() == null || tfNama.getText().trim().isEmpty() || dwKelas.getValue() == null || dwStatus.getValue() == null) {
+            Alert warning = new Alert(Alert.AlertType.WARNING, "Isi semua data", ButtonType.YES);
+            warning.showAndWait();
+        } else {
+            String query = "INSERT INTO siswa VALUES(" + idKosong + ",'" + tfNIS.getText() + "','" + tfNama.getText() + "','" + dwKelas.getValue() + "','"+ dwStatus.getValue() +"')";
+            executeQuery(query);
+        }
 
     }
 
+
+
     public void updateSiswa() {
-        String lunas = "lunas";
         Integer idKosong = null;
 
-        String query = "UPDATE siswa SET nis = '" + tfNIS.getText() + "', nama = '" + tfNama.getText() + "', kelas = '"
-                + dwKelas.getValue() + "', status = '" + lunas + "' WHERE nis = " + session.selectedSiswa +"";
-        executeQuery(query);
+        if (tfNIS.getText() == null || tfNIS.getText().trim().isEmpty() || tfNama.getText() == null || tfNama.getText().trim().isEmpty() || dwKelas.getValue() == null || dwStatus.getValue() == null) {
+            Alert warning = new Alert(Alert.AlertType.WARNING, "Isi semua data", ButtonType.YES);
+            warning.showAndWait();
+        } else {
+            String query = "UPDATE siswa SET nis = '" + tfNIS.getText() + "', nama = '" + tfNama.getText() + "', kelas = '"
+                    + dwKelas.getValue() + "', status = '" + dwStatus.getValue() + "' WHERE nis = " + session.selectedNisSiswa +"";
+            executeQuery(query);
+        }
+
+
 
     }
 

@@ -42,10 +42,17 @@ public class dashboardUserController extends helpers implements Initializable  {
 //            ResultSet rs = connection.createStatement().executeQuery("SELECT SUM(nominal_spp) AS total FROM spp INNER JOIN siswa ON spp.kelas = siswa.kelas WHERE username = '" + session.username +"' WHERE kelas = '" + session.kelas +"' ");
               ResultSet rs = connection.createStatement().executeQuery("SELECT SUM(nominal_spp) AS total FROM spp WHERE kelas = '" + session.kelas +"'");
 //            ResultSet rs2 = connection.createStatement().executeQuery("SELECT COUNT(id_siswa) as jumlahSiswa FROM siswa ");
-            rs.next();
-            String total =  "Rp. " + rs.getString("total");
 
-            labelTotal.setText(total);
+            rs.next();
+            String total = rs.getString("total");
+
+            if ( total == null ) {
+                labelTotal.setText("Lunas");
+            } else {
+                labelTotal.setText("Rp. " + total);
+            }
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }

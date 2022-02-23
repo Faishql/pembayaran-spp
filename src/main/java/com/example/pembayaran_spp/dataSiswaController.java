@@ -2,6 +2,7 @@ package com.example.pembayaran_spp;
 
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
@@ -9,6 +10,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -160,8 +162,8 @@ public class dataSiswaController extends helpers  implements Initializable {
 
     private void addButtonToTable() {
         TableColumn aksi = new TableColumn("Aksi");
-        aksi.setPrefWidth(176);
-        aksi.setStyle("-fx-selection-bar: #c4c4c4;");
+        aksi.setPrefWidth(186);
+        aksi.setStyle("-fx-selection-bar: #c4c4c4; -fx-alignment: CENTER;");
 
         Callback<TableColumn<Siswa, Void>, TableCell<Siswa, Void>> cellFactory = new Callback<TableColumn<Siswa, Void>, TableCell<Siswa, Void>>() {
             @Override
@@ -172,11 +174,21 @@ public class dataSiswaController extends helpers  implements Initializable {
 
                     {
                         btnUpdate.setStyle("-fx-background-color: #FFC900; -fx-text-fill: #fff;");
+                        btnUpdate.setOnMouseEntered(new EventHandler() {
+                            @Override
+                            public void handle(Event event) {
+                                btnUpdate.setCursor(Cursor.HAND); //Change cursor to hand
+                            }
+                        });
                         btnUpdate.setOnAction(e-> {
                             Siswa selectedId = tableSiswa.getSelectionModel().getSelectedItem();
                             if (!(selectedId == null)) {
                                 try {
-                                    session.selectedSiswa = tableSiswa.getSelectionModel().getSelectedItem().getNis();
+                                    session.selectedNisSiswa = tableSiswa.getSelectionModel().getSelectedItem().getNis();
+                                    session.selectedNamaSiswa = tableSiswa.getSelectionModel().getSelectedItem().getNama();
+                                    session.selectedKelasSiswa = tableSiswa.getSelectionModel().getSelectedItem().getKelas();
+                                    session.selectedStatusSiswa = tableSiswa.getSelectionModel().getSelectedItem().getStatus();
+
                                     handleButtonAction(e);
                                 } catch (IOException ex) {
                                     ex.printStackTrace();
@@ -196,6 +208,13 @@ public class dataSiswaController extends helpers  implements Initializable {
 
                     {
                         btnDelete.setStyle("-fx-background-color: #DA1212; -fx-text-fill: #fff;");
+
+                        btnDelete.setOnMouseEntered(new EventHandler() {
+                            @Override
+                            public void handle(Event event) {
+                                btnDelete.setCursor(Cursor.HAND); //Change cursor to hand
+                            }
+                        });
                         btnDelete.setOnAction((ActionEvent event) -> {
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete ?", ButtonType.YES, ButtonType.CANCEL);
                             alert.setTitle("Konformasi Hapus");
@@ -224,6 +243,7 @@ public class dataSiswaController extends helpers  implements Initializable {
                         } else {
                             HBox hbox = new HBox( btnUpdate , btnDelete);
                             hbox.setSpacing(10);
+                            hbox.setStyle("-fx-alignment: CENTER;");
                             setGraphic(hbox);
 
                         }

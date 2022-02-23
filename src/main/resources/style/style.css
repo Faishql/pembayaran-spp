@@ -18,6 +18,9 @@
   font-weight: 700;
   src: url('../fonts/Poppins-Bold.ttf') format('truetype');
 }
+AnchorPane {
+    -fx-background-color: #ffffff;
+}
 #regular{
     -fx-font-family: 'Poppins regular', sans-serif;
 }
@@ -56,4 +59,20 @@ TableView#semibold .table-cell{
 .table-row-cell{
     -fx-background-color: #fff;
     -fx-text-background-color: #333;
+}
+.table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+TableView *.scroll-bar:horizontal *.increment-arrow,
+TableView *.scroll-bar:horizontal *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
 }

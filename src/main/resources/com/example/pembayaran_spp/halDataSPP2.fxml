@@ -200,17 +200,17 @@
                   </Button>
                </children>
             </HBox>
-            <ComboBox fx:id="dwSelectKelas" prefHeight="40.0" prefWidth="200.0" promptText="Pilih Kelas" style="-fx-background-color: #ffff; -fx-border-color: #c4c4c4;">
+            <ComboBox id="regular" fx:id="dwSelectKelas" prefHeight="40.0" prefWidth="200.0" promptText="Pilih Kelas" style="-fx-background-color: #ffff; -fx-border-color: #c4c4c4; -fx-text-fill: #333;">
                <VBox.margin>
                   <Insets top="40.0" />
                </VBox.margin>
             </ComboBox>
-            <TableView id="semibold" fx:id="tableSPP" style="-fx-text-fill: #333; -fx-border-color: #fff; -fx-background-color: #fff;">
+            <TableView id="semibold" fx:id="tableSPP" style="-fx-background-color: #fff;">
                <columns>
-                  <TableColumn id="no" fx:id="no" maxWidth="-Infinity" minWidth="60.0" prefWidth="60.0" resizable="false" style="-fx-alignment: CENTER; -fx-size: 40; -fx-background-color: #fff;" text="No" />
-                  <TableColumn id="kelas" fx:id="kelas" maxWidth="-Infinity" minWidth="180.0" prefWidth="180.0" resizable="false" style="-fx-alignment: CENTER; -fx-size: 40; -fx-background-color: #fff;" text="kelas" />
-                  <TableColumn id="nominal_spp" fx:id="nominal" maxWidth="-Infinity" minWidth="240.0" prefWidth="240.0" resizable="false" style="-fx-alignment: CENTER; -fx-size: 40; -fx-background-color: #fff;" text="Nominal(Rp)" />
-                  <TableColumn id="nominal_spp" fx:id="tanggal" maxWidth="-Infinity" minWidth="240.0" prefWidth="240.0" resizable="false" style="-fx-alignment: CENTER; -fx-size: 40; -fx-background-color: #fff;" text="Tanggal" />
+                  <TableColumn id="no" fx:id="no" maxWidth="-Infinity" minWidth="60.0" prefWidth="60.0" resizable="false" style="-fx-alignment: CENTER; -fx-size: 40;" text="NO" />
+                  <TableColumn id="kelas" fx:id="kelas" maxWidth="-Infinity" minWidth="180.0" prefWidth="180.0" resizable="false" style="-fx-alignment: CENTER; -fx-size: 40;" text="KELAS" />
+                  <TableColumn id="nominal_spp" fx:id="nominal" maxWidth="-Infinity" minWidth="240.0" prefWidth="240.0" resizable="false" style="-fx-alignment: CENTER; -fx-size: 40;" text="NOMINAL(Rp)" />
+                  <TableColumn id="nominal_spp" fx:id="tanggal" maxWidth="-Infinity" minWidth="240.0" prefWidth="240.0" resizable="false" style="-fx-alignment: CENTER; -fx-size: 40;" text="BULAN" />
                </columns>
                <VBox.margin>
                   <Insets top="40.0" />

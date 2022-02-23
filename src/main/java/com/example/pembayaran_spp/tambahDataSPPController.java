@@ -13,6 +13,7 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 public class tambahDataSPPController implements Initializable {
@@ -45,6 +46,11 @@ public class tambahDataSPPController implements Initializable {
         } else if(session.getModal == "update" ) {
             labelModal.setText("Ubah Data SPP");
             buttonMain.setText("Ubah");
+
+            kelas.setText(session.selectedKelas);
+            nominal.setText(String.valueOf(session.selectedNominal));
+//            tanggal.setValue(LocalDate.parse(session.selectedTanggal));
+
             buttonMain.setOnAction(e->updateSPP()) ;
         }
     }

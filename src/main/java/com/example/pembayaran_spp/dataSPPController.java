@@ -5,9 +5,12 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -60,6 +63,8 @@ public class dataSPPController extends helpers implements Initializable {
             openTambahSPP();
         } else {
             session.getModal = "update";
+
+
             openTambahSPP();
         }
     }
@@ -67,12 +72,12 @@ public class dataSPPController extends helpers implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        dwSelectKelas.setItems(List);
+
+        dwSelectKelas.setItems(getKelasList());
         showSPP();
         addButtonToTable();
     }
 
-    ObservableList<String> List = FXCollections.observableArrayList("XII RPL C", "X MM C","XIII MEKA E");
 
     public Connection getConnection(){
         Connection connection;
@@ -85,6 +90,32 @@ public class dataSPPController extends helpers implements Initializable {
         }
     }
 
+    public ObservableList getKelasList(){
+        ObservableList sppList = FXCollections.observableArrayList();
+        Connection connection = getConnection();
+
+        String query = "SELECT * FROM spp";
+        Statement st;
+        ResultSet rs;
+
+        try {
+
+            st = connection.createStatement();
+            rs = st.executeQuery(query);
+            String spp;
+
+            while (rs.next()) {
+                spp = rs.getString("kelas");
+                sppList.add(spp);
+            }
+
+            sppList.add("Show All");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return sppList;
+    }
+
 
 
     public ObservableList<SPP> getSPPList(){
@@ -94,7 +125,7 @@ public class dataSPPController extends helpers implements Initializable {
         String query;
         String getStringDW = (String) dwSelectKelas.getValue();
 
-            if ( getStringDW == null || getStringDW.trim().isEmpty()  ) {
+            if ( getStringDW == null || getStringDW.trim().isEmpty() || getStringDW == "Show All" ) {
                 query = "SELECT * FROM spp";
             } else {
                 query = "SELECT * FROM spp WHERE kelas = '"+ getStringDW + "' ";
@@ -138,6 +169,8 @@ public class dataSPPController extends helpers implements Initializable {
 
     private void addButtonToTable() {
         TableColumn aksi = new TableColumn("Aksi");
+        aksi.setPrefWidth(226);
+        aksi.setStyle("-fx-selection-bar: #c4c4c4; -fx-alignment: CENTER;");
 
         Callback<TableColumn<SPP, Void>, TableCell<SPP, Void>> cellFactory = new Callback<TableColumn<SPP, Void>, TableCell<SPP, Void>>() {
             @Override
@@ -148,8 +181,19 @@ public class dataSPPController extends helpers implements Initializable {
 
                     {
                         btnUpdate.setStyle("-fx-background-color: #FFC900; -fx-text-fill: #fff;");
+                        btnUpdate.setOnMouseEntered(new EventHandler() {
+                            @Override
+                            public void handle(Event event) {
+                                btnUpdate.setCursor(Cursor.HAND); //Change cursor to hand
+                            }
+                        });
                         btnUpdate.setOnAction(e-> {
                             try {
+                                session.selectedKelas = tableSPP.getSelectionModel().getSelectedItem().getKelas();
+                                session.selectedNominal = tableSPP.getSelectionModel().getSelectedItem().getNominal();
+                                session.selectedTanggal = tableSPP.getSelectionModel().getSelectedItem().getTanggal();
+
+
                                 handleButtonAction(e);
                             } catch (IOException ex) {
                                 ex.printStackTrace();
@@ -161,6 +205,12 @@ public class dataSPPController extends helpers implements Initializable {
 
                     {
                         btnDelete.setStyle("-fx-background-color: #DA1212; -fx-text-fill: #fff;");
+                        btnDelete.setOnMouseEntered(new EventHandler() {
+                            @Override
+                            public void handle(Event event) {
+                                btnDelete.setCursor(Cursor.HAND); //Change cursor to hand
+                            }
+                        });
                         btnDelete.setOnAction((ActionEvent event) -> {
 
                             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete?", ButtonType.YES, ButtonType.CANCEL);
@@ -184,6 +234,7 @@ public class dataSPPController extends helpers implements Initializable {
                         } else {
                             HBox hbox = new HBox( btnUpdate , btnDelete);
                             hbox.setSpacing(10);
+                            hbox.setStyle("-fx-alignment: CENTER;");
                             setGraphic(hbox);
                         }
                     }
@@ -202,6 +253,8 @@ public class dataSPPController extends helpers implements Initializable {
     public void refreshTable(ActionEvent event) {
         tableSPP.setItems(getSPPList());
         tableSPP.refresh();
+
+        dwSelectKelas.setItems(getKelasList());
     }
 
     public void deleteSPP(ActionEvent event){

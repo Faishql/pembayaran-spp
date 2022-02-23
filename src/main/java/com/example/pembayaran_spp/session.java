@@ -7,5 +7,13 @@ public class session {
 
     public static String kelas;
 
-    public static String selectedSiswa;
+    public static String selectedNisSiswa;
+    public static String selectedNamaSiswa;
+    public static String selectedKelasSiswa;
+    public static String selectedStatusSiswa;
+
+    public static String selectedKelas;
+    public static Integer selectedNominal;
+    public static String selectedTanggal;
+
 }
