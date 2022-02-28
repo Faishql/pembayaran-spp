@@ -94,7 +94,7 @@ public class dataSPPController extends helpers implements Initializable {
         ObservableList sppList = FXCollections.observableArrayList();
         Connection connection = getConnection();
 
-        String query = "SELECT * FROM spp";
+        String query = "SELECT DISTINCT kelas FROM spp";
         Statement st;
         ResultSet rs;
 
@@ -188,16 +188,24 @@ public class dataSPPController extends helpers implements Initializable {
                             }
                         });
                         btnUpdate.setOnAction(e-> {
-                            try {
-                                session.selectedKelas = tableSPP.getSelectionModel().getSelectedItem().getKelas();
-                                session.selectedNominal = tableSPP.getSelectionModel().getSelectedItem().getNominal();
-                                session.selectedTanggal = tableSPP.getSelectionModel().getSelectedItem().getTanggal();
+                            SPP selectedIdSPP = tableSPP.getSelectionModel().getSelectedItem();
+                            if (!(selectedIdSPP == null)) {
+                                try {
+                                    session.selectedNoKelas = tableSPP.getSelectionModel().getSelectedItem().getNo();
+                                    session.selectedKelas = tableSPP.getSelectionModel().getSelectedItem().getKelas();
+                                    session.selectedNominal = tableSPP.getSelectionModel().getSelectedItem().getNominal();
+//                                    session.selectedTanggal = tableSPP.getSelectionModel().getSelectedItem().getTanggal();
 
 
-                                handleButtonAction(e);
-                            } catch (IOException ex) {
-                                ex.printStackTrace();
+                                    handleButtonAction(e);
+                                } catch (IOException ex) {
+                                    ex.printStackTrace();
+                                }
+                            } else {
+                                Alert warning = new Alert(Alert.AlertType.WARNING, "Pilih baris data siswa terlebih dahulu", ButtonType.YES);
+                                warning.showAndWait();
                             }
+
                         });
                     }
 
@@ -212,16 +220,21 @@ public class dataSPPController extends helpers implements Initializable {
                             }
                         });
                         btnDelete.setOnAction((ActionEvent event) -> {
+                            SPP selectedIdSPP = tableSPP.getSelectionModel().getSelectedItem();
+                            if (!(selectedIdSPP == null)) {
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete?", ButtonType.YES);
+                                alert.setTitle("Konformasi Hapus");
+                                alert.showAndWait();
 
-                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Delete?", ButtonType.YES, ButtonType.CANCEL);
-                            alert.setTitle("Konformasi Hapus");
-                            alert.showAndWait();
-
-                            if (alert.getResult() == ButtonType.YES) {
-                                Integer idDelete = 21;
-                                String query = " DELETE FROM SPP WHERE id_kelas = " + idDelete + "";
-                                executeQuery(query);
+                                if (alert.getResult() == ButtonType.YES) {
+                                    String query = " DELETE FROM SPP WHERE id_kelas = " + selectedIdSPP.getNo() + "";
+                                    executeQuery(query);
+                                }
+                            } else {
+                                Alert warning = new Alert(Alert.AlertType.WARNING, "Pilih baris data siswa terlebih dahulu", ButtonType.YES, ButtonType.CANCEL);
+                                warning.showAndWait();
                             }
+
 
                         });
                     }
@@ -255,14 +268,6 @@ public class dataSPPController extends helpers implements Initializable {
         tableSPP.refresh();
 
         dwSelectKelas.setItems(getKelasList());
-    }
-
-    public void deleteSPP(ActionEvent event){
-
-        Integer idDelete = 9;
-        String query = " DELETE FROM SPP WHERE id_SPP = " + idDelete + "";
-        executeQuery(query);
-
     }
 
     private void executeQuery(String query) {

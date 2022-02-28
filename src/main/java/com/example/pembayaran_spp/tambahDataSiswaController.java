@@ -9,10 +9,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 public class tambahDataSiswaController extends dataSiswaController implements Initializable {
@@ -43,7 +42,6 @@ public class tambahDataSiswaController extends dataSiswaController implements In
     public void initialize(URL location, ResourceBundle resources) {
 
         dwKelas.setItems(getKelasList());
-        dwStatus.setItems(statusOption);
 
         if (session.getModal == "tambah" ) {
             labelModal.setText("Tambah Data Siswa");
@@ -56,7 +54,6 @@ public class tambahDataSiswaController extends dataSiswaController implements In
             tfNama.setText(session.selectedNamaSiswa);
             dwKelas.setValue(session.selectedKelasSiswa);
             tfNIS.setText(session.selectedNisSiswa);
-            dwStatus.setValue(session.selectedStatusSiswa);
 
             buttonMain.setOnAction(e->updateSiswa()) ;
         }
@@ -64,7 +61,7 @@ public class tambahDataSiswaController extends dataSiswaController implements In
 
 
 
-    ObservableList<String> statusOption = FXCollections.observableArrayList("Lunas", "Belum Lunas");
+//    ObservableList<String> statusOption = FXCollections.observableArrayList("Lunas", "Belum Lunas");
 
     public Connection getConnection(){
         Connection connection;
@@ -81,7 +78,7 @@ public class tambahDataSiswaController extends dataSiswaController implements In
         ObservableList sppList = FXCollections.observableArrayList();
         Connection connection = getConnection();
 
-        String query = "SELECT * FROM spp";
+        String query = "SELECT DISTINCT kelas FROM spp";
         Statement st;
         ResultSet rs;
 
@@ -105,35 +102,115 @@ public class tambahDataSiswaController extends dataSiswaController implements In
     public void insertSiswa() {
         Integer idKosong = null;
 
-        if (tfNIS.getText() == null || tfNIS.getText().trim().isEmpty() || tfNama.getText() == null || tfNama.getText().trim().isEmpty() || dwKelas.getValue() == null || dwStatus.getValue() == null) {
+        if (tfNIS.getText() == null || tfNIS.getText().trim().isEmpty() || tfNama.getText() == null || tfNama.getText().trim().isEmpty() || dwKelas.getValue() == null ) {
             Alert warning = new Alert(Alert.AlertType.WARNING, "Isi semua data", ButtonType.YES);
             warning.showAndWait();
         } else {
-            String query = "INSERT INTO siswa VALUES(" + idKosong + ",'" + tfNIS.getText() + "','" + tfNama.getText() + "','" + dwKelas.getValue() + "','"+ dwStatus.getValue() +"')";
+            String query = "INSERT INTO siswa VALUES(" + idKosong + ",'" + tfNIS.getText() + "','" + tfNama.getText() + "','" + dwKelas.getValue() + "')";
             executeQuery(query);
+
+            addBayar();
+            addUser();
+
+
         }
 
     }
 
+    public void addBayar() {
 
+        try {
+            String query3 = "insert into bayar( nominal, kelas, tanggal, status, nis) (select spp.nominal_spp,'" + dwKelas.getValue() +"', spp.tanggal, '" + "Belum Lunas" + "', '" + tfNIS.getText() + "' from siswa inner join spp on '" + dwKelas.getValue() + "' = spp.kelas where siswa.nis = '"+ tfNIS.getText() +"')";
+            executeQuery(query3);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    public void addUser() {
+
+        try {
+            String query4 = "INSERT INTO users VALUES(" + null + ", '" + tfNIS.getText() + "', '" + tfNIS.getText() + "', '" + "user" + "')";
+            executeQuery(query4);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
 
     public void updateSiswa() {
         Integer idKosong = null;
 
-        if (tfNIS.getText() == null || tfNIS.getText().trim().isEmpty() || tfNama.getText() == null || tfNama.getText().trim().isEmpty() || dwKelas.getValue() == null || dwStatus.getValue() == null) {
+        if (tfNIS.getText() == null || tfNIS.getText().trim().isEmpty() || tfNama.getText() == null || tfNama.getText().trim().isEmpty() || dwKelas.getValue() == null ) {
             Alert warning = new Alert(Alert.AlertType.WARNING, "Isi semua data", ButtonType.YES);
             warning.showAndWait();
         } else {
             String query = "UPDATE siswa SET nis = '" + tfNIS.getText() + "', nama = '" + tfNama.getText() + "', kelas = '"
-                    + dwKelas.getValue() + "', status = '" + dwStatus.getValue() + "' WHERE nis = " + session.selectedNisSiswa +"";
+                    + dwKelas.getValue() + "' WHERE nis = " + session.selectedNisSiswa +"";
+
+
+            String kelasBaru = (String) dwKelas.getValue();
+            String kelasLama = session.selectedKelasSiswa;
+
+//            System.out.println(kelasLama);
+//            System.out.println(kelasBaru);
+
+            if (kelasBaru.equals(kelasLama)) {
+
+                updateBayar();
+
+                updateUser();
+
+            } else {
+                deleteBayar();
+
+                addBayar();
+
+                updateUser();
+                ;
+            }
+
             executeQuery(query);
+
         }
+    }
 
+    public void deleteBayar() {
 
+        try {
+            String query2 = "DELETE FROM bayar WHERE nis = '" + session.selectedNisSiswa + "' ";
+            executeQuery(query2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
     }
 
-    private void executeQuery(String query) {
+    public void updateBayar() {
+
+        try {
+            String query2 = "UPDATE bayar SET nis = '" + tfNIS.getText() + "' WHERE nis = " + session.selectedNisSiswa +"";
+            executeQuery(query2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+
+    public void updateUser() {
+
+        try {
+            String query2 = "UPDATE users SET username = '" + tfNIS.getText() + "', password = '" + tfNIS.getText() + "' WHERE username = '" + session.selectedNisSiswa +"'";
+            executeQuery(query2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    public void executeQuery(String query) {
         Connection connection = getConnection();
         Statement st;
 

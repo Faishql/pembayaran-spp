@@ -46,7 +46,6 @@ public class loginController extends helpers implements Initializable {
                             var result2 = connection.createStatement().executeQuery("SELECT * FROM users INNER JOIN siswa ON users.username = siswa.nis WHERE username = '" + username.getText() +"'");
                             result2.next();
 
-                            System.out.println(result2.getString("kelas"));
                             session.kelas = result2.getString("kelas");
 
                             changePage(event, "dashboardUser2");

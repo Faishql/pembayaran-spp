@@ -103,7 +103,7 @@ public class dataSiswaController extends helpers  implements Initializable {
 
             while (rs.next()) {
                 siswa = new Siswa(rs.getInt("id_siswa"), rs.getString("nis"),
-                        rs.getString("nama"), rs.getString("kelas"), rs.getString("status"));
+                        rs.getString("nama"), rs.getString("kelas"), "Belum Lunas");
                 siswaList.add(siswa);
             }
 
@@ -136,7 +136,7 @@ public class dataSiswaController extends helpers  implements Initializable {
     }
 
 
-    private void executeQuery(String query) {
+    void executeQuery(String query) {
         Connection connection = getConnection();
         Statement st;
 
@@ -146,9 +146,7 @@ public class dataSiswaController extends helpers  implements Initializable {
 
             int i = st.executeUpdate(query);
             if (i > 0) {
-//                Stage stage = (Stage) openTambah.getScene().getWindow();
-//
-//                stage.close();
+
                 System.out.println("success");
 
             } else {
@@ -225,6 +223,9 @@ public class dataSiswaController extends helpers  implements Initializable {
                                 if (!(selectedId == null)) {
                                     String query = " DELETE FROM siswa WHERE id_siswa = " + selectedId.getNo() + "";
                                     executeQuery(query);
+
+                                    deleteBayar();
+                                    deleteUser();
                                 } else {
                                     Alert warning = new Alert(Alert.AlertType.WARNING, "Pilih baris data siswa terlebih dahulu", ButtonType.YES, ButtonType.CANCEL);
                                     warning.showAndWait();
@@ -257,6 +258,30 @@ public class dataSiswaController extends helpers  implements Initializable {
         aksi.setCellFactory(cellFactory);
 
         tableSiswa.getColumns().add(aksi);
+
+    }
+
+    public void deleteBayar() {
+
+        try {
+            String nisSelected = tableSiswa.getSelectionModel().getSelectedItem().getNis();
+            String query2 = "DELETE FROM bayar WHERE nis = '" + nisSelected + "' ";
+            executeQuery(query2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+    public void deleteUser() {
+
+        try {
+            String nisSelected = tableSiswa.getSelectionModel().getSelectedItem().getNis();
+            String query2 = "DELETE FROM users WHERE username = '" + nisSelected + "' ";
+            executeQuery(query2);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
 
     }
 

@@ -13,7 +13,11 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class tambahDataSPPController implements Initializable {
@@ -73,19 +77,30 @@ public class tambahDataSPPController implements Initializable {
         String month = String.valueOf(tanggal.getValue().getMonth());
         String tanggalAll = month + ' ' + ' ' + year;
 
-        String query = "INSERT INTO spp VALUES(" + idKosong + ",'" + kelas.getText() + "'," + nominal.getText() + ",'" + tanggalAll  + "')";
+
+        String query = "INSERT INTO spp VALUES(" + idKosong + ",'" + kelas.getText() + "'," + nominal.getText() + ",'" + tanggalAll + "')";
         executeQuery(query);
 
     }
 
+    public void addBayar() {
+
+        try {
+            String query3 = "insert into bayar( nominal, kelas, tanggal, status, nis) (select " + nominal.getText() +",'" + dwKelas.getValue() +"', spp.tanggal, '" + "Belum Lunas" + "', '" + tfNIS.getText() + "' from siswa inner join spp on '" + dwKelas.getValue() + "' = spp.kelas where siswa.nis = '"+ tfNIS.getText() +"')";
+            executeQuery(query3);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
     public void updateSPP(){
-        Integer idUpdate = 21;
         String year = String.valueOf(tanggal.getValue().getYear());
         String month = String.valueOf(tanggal.getValue().getMonth());
         String tanggalAll = month + ' ' + ' ' + year;
 
         String query = "UPDATE spp SET kelas = '" + kelas.getText() + "', nominal_spp = " + nominal.getText() + ", tanggal = '"
-                + tanggalAll + "' WHERE id_kelas = " + idUpdate +"";
+                + tanggalAll + "' WHERE id_kelas = " + session.selectedNoKelas +"";
         executeQuery(query);
 
     }

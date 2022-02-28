@@ -3,10 +3,13 @@ package com.example.pembayaran_spp;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
@@ -61,7 +64,7 @@ public class bayarSPPController extends helpers implements Initializable{
     public ObservableList<Bayar> getBayarList(){
         ObservableList<Bayar> bayarList = FXCollections.observableArrayList();
         Connection connection = getConnection();
-        String query = "SELECT * FROM siswa INNER JOIN spp ON siswa.kelas = spp.kelas WHERE nis = '" +session.username +"'";
+        String query = "SELECT * FROM bayar WHERE bayar.nis = '" + session.username + "'";
         Statement st;
         ResultSet rs;
 
@@ -71,7 +74,7 @@ public class bayarSPPController extends helpers implements Initializable{
             Bayar bayar;
 
             while (rs.next()) {
-                bayar = new Bayar( rs.getString("kelas"), rs.getString("nominal_spp"), rs.getString("status"), rs.getString("tanggal"));
+                bayar = new Bayar( rs.getString("kelas"), rs.getString("nominal"),  rs.getString("tanggal"), rs.getString("status"));
                 bayarList.add(bayar);
             }
 
@@ -90,9 +93,10 @@ public class bayarSPPController extends helpers implements Initializable{
             }
         });
         kelas.setCellValueFactory(new PropertyValueFactory<Bayar, String>("kelas"));
-        tanggal.setCellValueFactory(new PropertyValueFactory<Bayar, String>("tanggal"));
         nominal.setCellValueFactory(new PropertyValueFactory<Bayar, String>("nominal"));
+        tanggal.setCellValueFactory(new PropertyValueFactory<Bayar, String>("tanggal"));
         status.setCellValueFactory(new PropertyValueFactory<Bayar, String>("status"));
+
 
 //        addButtonToTable();
 
@@ -112,34 +116,35 @@ public class bayarSPPController extends helpers implements Initializable{
 
                     {
                         btnBayar.setStyle("-fx-background-color: #01937C; -fx-text-fill: #fff;");
+                        btnBayar.setOnMouseEntered(new EventHandler() {
+                            @Override
+                            public void handle(Event event) {
+                                btnBayar.setCursor(Cursor.HAND); //Change cursor to hand
+                            }
+                        });
                         btnBayar.setOnAction((ActionEvent event) -> {
 
-                            String lunas = "lunas";
-                            Integer idKosong = null;
-                            String idUpdate = tableBayarSPP.getSelectionModel().getSelectedItem().getTanggal();
-                            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bayar ?", ButtonType.YES, ButtonType.CANCEL);
-                            alert.setTitle("Konformasi Bayar");
-                            alert.showAndWait();
+                            Bayar selectedRow = tableBayarSPP.getSelectionModel().getSelectedItem();
+                            if (!(selectedRow == null)) {
+                                Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Bayar ?", ButtonType.YES, ButtonType.CANCEL);
+                                alert.setTitle("Konformasi Bayar");
+                                alert.showAndWait();
 
-                            if (alert.getResult() == ButtonType.YES) {
-                                String query = "UPDATE siswa SET  status = '" + lunas + "' WHERE id_siswa = " + idUpdate +"";
-                                executeQuery(query);
-//                                UPDATE t1
-//                                SET t1.CalculatedColumn = t2.[Calculated Column]
-//                                FROM dbo.Table1 AS t1
-//                                INNER JOIN dbo.Table2 AS t2
-//                                ON t1.CommonField = t2.[Common Field]
-//                                WHERE t1.BatchNo = '110';
+                                if (alert.getResult() == ButtonType.YES) {
+                                    String query = "UPDATE bayar SET status = '" + "Lunas" + "' WHERE nis = '" + session.username +"' AND tanggal = '" + selectedRow.getTanggal() + "'";
+                                    executeQuery(query);
+                                }
+                            } else {
+                                Alert warning = new Alert(Alert.AlertType.WARNING, "Pilih baris data siswa terlebih dahulu", ButtonType.YES, ButtonType.CANCEL);
+                                warning.showAndWait();
                             }
-
-
                         });
                     }
-                    private final Button btnCetak = new Button("Bayar");
-
-                    {
-
-                    }
+//                    private final Button btnCetak = new Button("Bayar");
+//
+//                    {
+//
+//                    }
 
                     @Override
                     protected void updateItem(Object item, boolean empty) {
